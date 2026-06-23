@@ -11,23 +11,45 @@ namespace MiApp
             Id = id;
             Nombre = nombre;
             Notas = new List<Nota>();
-            Notas.Add(new Nota(5));
+
+        }
+
+        internal Alumno(int id, string nombre, List<Nota> lista)
+        {
+            Id = id;
+            Nombre = nombre;
+            Notas = lista;
+
+
         }
 
         public void AgregarNota(Nota nota)
         {
             Notas.Add(nota);
-        }
 
-        
+        }
 
         public void EliminarNota(Nota nota)
         {
             if (!Notas.Contains(nota))
                 throw new InvalidOperationException("La nota no existe en la lista");
-            
+
             Notas.Remove(nota);
         }
 
+        public Nota? ObtenerMejorNota()
+        {
+            return Notas.OrderByDescending(nota => nota.Valor).FirstOrDefault();
+        }
+
+        public Nota? ObtenerPeorNota()
+        {
+            return Notas.OrderByDescending(nota => nota.Valor).Reverse().FirstOrDefault();
+        }
+        public double ObtenerNotaMedia()
+        {
+            return Notas.Average(nota => nota.Valor);
+
+        }
     }
 }
