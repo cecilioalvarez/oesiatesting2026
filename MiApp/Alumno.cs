@@ -19,6 +19,8 @@ namespace MiApp
             Notas.Add(nota);
         }
 
+        
+
         public void EliminarNota(Nota nota)
         {
             if (!Notas.Contains(nota))
