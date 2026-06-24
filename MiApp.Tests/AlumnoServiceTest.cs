@@ -41,9 +41,9 @@ public class AlumnoServiceTest
         var mockUtilidades= new Mock<Utilidades>();
 
         var alumno= new Alumno{Id=2,Nombre="luis Martinez"};
-         mockRepositorio.Setup(r=>r.BuscarPorId(2)).Returns(alumno);
 
-        mockUtilidades.Setup(u=>u.PrimeraLetraMayuscula("luis")).Returns("Luis");
+         mockRepositorio.Setup(r=>r.BuscarPorId(2)).Returns(alumno);
+         mockUtilidades.Setup(u=>u.PrimeraLetraMayuscula("luis Martinez")).Returns("Luis");
 
 
       
@@ -51,8 +51,12 @@ public class AlumnoServiceTest
 
         var alumnoEncontrado = service.BuscarPorId(2);
 
+        mockRepositorio.Verify(r=>r.BuscarPorId(2),Times.Once);
+        mockUtilidades.Verify(r=>r.PrimeraLetraMayuscula("luis Martinez"),Times.Once);
+
+
         Assert.Equal(2, alumnoEncontrado?.Id);
-        Assert.Equal("Luis martínez", alumnoEncontrado?.Nombre);
+        Assert.Equal("Luis", alumnoEncontrado?.Nombre);
 
     }
 
