@@ -3,8 +3,8 @@ namespace MiApp
     public class Alumno
     {
         public int Id { get; set; }
-        public string Nombre { get; set; }
-        public List<Nota> Notas { get; set; }
+        public string Nombre { get; set; }=string.Empty;
+        public List<Nota> Notas { get; set; }= new List<Nota>();
 
         public Alumno()
         {
