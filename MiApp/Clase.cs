@@ -29,5 +29,15 @@ namespace MiApp
 
             Alumnos.Remove(alumno);
         }
+        public double ObtenerMediaClase()
+        {
+            double suma = 0;
+            foreach (Alumno alumno in Alumnos)
+            {
+                suma += alumno.ObtenerNotaMedia();
+            }
+            return suma / Alumnos.Count;
+        }
+
     }
 }
