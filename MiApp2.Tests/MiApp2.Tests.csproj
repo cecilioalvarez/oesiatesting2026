@@ -18,4 +18,8 @@
     <Using Include="Xunit" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MiApp2\MiApp2.csproj" />
+  </ItemGroup>
+
 </Project>
