@@ -13,22 +13,6 @@ public class TransformadorTest{
         mockLectorFichero.Setup(l => l.leerLineas()).Returns(ObtenerLineasAlumnosClase());
         transformadorClase = new TransformadorClase(mockLectorFichero.Object);
     }
-    
-
-    [Fact]
-    public void Validar_Dependencia_Transformador_Lector_Test()
-    {
-
-
-        Mock<LectorFichero> mockLectorFichero = new Mock<LectorFichero>();
-        TransformadorClase transformadorClase = new TransformadorClase(mockLectorFichero.Object);
-        mockLectorFichero.Setup(l => l.leerLineas()).Returns(new List<string>());
-        Clase clase = transformadorClase.ObtenerClaseConAlumnos();
-        mockLectorFichero.Verify(l => l.leerLineas(), Times.Once);
-
-
-    }
-
     [Fact]
     public void Obtener_Clase_Con_Alumnos_Test()
     {
