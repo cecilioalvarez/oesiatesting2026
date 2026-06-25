@@ -1,0 +1,21 @@
+# Binarios y compilados
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Rider
+.idea/
+
+# Logs
+*.log
+
+# NuGet
+*.nupkg
+packages/
+
+# Configuración local
+appsettings.Development.json

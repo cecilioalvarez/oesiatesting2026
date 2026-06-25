@@ -11,45 +11,52 @@ public class TransformadorClase
     }
 
 
-    public virtual Clase ObtenerClaseConAlumnos()
 
+
+    public Clase ObtenerClaseConAlumnos()
     {
-
-        List<Alumno> alumnos = new List<Alumno>();
         Clase miClase = new Clase();
-        List<string> lineas = lectorFichero.leerLineas();
-
-        lineas.RemoveAll(linea => linea.Contains("*"));
+        List<string> lineas = ObtenerLineasFiltradas();
 
         foreach (string linea in lineas)
         {
-            if (!linea.Contains("-"))
-            {
-                string[] datosLinea = linea.Split(",");
-
-                Alumno alumno = new Alumno();
-                alumno.Nombre = datosLinea[0];
-
-                // accedo a la posicion del alumno
-                int posicion = miClase.Alumnos.IndexOf(alumno);
-
-                // si el alumno no existe devuelve -1
-                if (posicion == -1)
-                {
-                    // añadimos el alumno a la lista
-                    miClase.AgregarAlumno(alumno);
-                }
-                else
-                {
-                    // obtenemos el alumno que hay en la lista
-                    alumno = miClase.Alumnos[posicion];
-                }
-
-                Nota nota = new Nota(double.Parse(datosLinea[2]));
-                alumno.AgregarNota(nota);
-            }
+           // if (!linea.Contains("-"))
+                ProcesarLinea(miClase, linea);
         }
 
         return miClase;
+    }
+
+    private List<string> ObtenerLineasFiltradas()
+    {
+        List<string> lineas = lectorFichero.leerLineas();
+        lineas.RemoveAll(linea => linea.Contains("*"));
+        lineas.RemoveAll(linea => linea.Contains("-"));
+        return lineas;
+    }
+
+    private void ProcesarLinea(Clase miClase, string linea)
+    {
+        string[] datosLinea = linea.Split(",");
+
+        Alumno alumno = ObtenerOCrearAlumno(miClase, datosLinea[0]);
+
+        Nota nota = new Nota(double.Parse(datosLinea[2]));
+        alumno.AgregarNota(nota);
+    }
+
+    private Alumno ObtenerOCrearAlumno(Clase miClase, string nombre)
+    {
+        Alumno alumno = new Alumno();
+        alumno.Nombre = nombre;
+
+        int posicion = miClase.Alumnos.IndexOf(alumno);
+        if (posicion == -1)
+        {
+            miClase.AgregarAlumno(alumno);
+            return alumno;
+        }
+
+        return miClase.Alumnos[posicion];
     }
 }

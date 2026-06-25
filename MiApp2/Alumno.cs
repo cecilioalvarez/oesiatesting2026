@@ -3,19 +3,35 @@ namespace MiApp2
     public class Alumno
     {
         public int Id { get; set; }
-        public string Nombre { get; set; }=string.Empty;
-        public List<Nota> Notas { get; set; }= new List<Nota>();
+        public string Nombre { get; set; } = string.Empty;
+        public List<Nota> Notas { get; set; } = new List<Nota>();
 
         public Alumno()
         {
-            
+
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is Alumno otro)
+                return Nombre == otro.Nombre;
+            return false;
+        }
+
+        public override int GetHashCode() => Nombre.GetHashCode();
 
         public Alumno(int id, string nombre)
         {
             Id = id;
             Nombre = nombre;
             Notas = new List<Nota>();
+
+        }
+        
+        public Alumno(string nombre)
+        {
+            Nombre = nombre;
+        
 
         }
 
@@ -58,5 +74,5 @@ namespace MiApp2
         }
 
     }
-    
+
 }
