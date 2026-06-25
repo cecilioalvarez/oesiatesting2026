@@ -3,8 +3,18 @@ namespace MiApp2.Tests;
 using MiApp2;
 using Moq;
 
-public class TransformadorTest
-{
+public class TransformadorTest{
+
+    private readonly TransformadorClase transformadorClase;
+
+      public TransformadorTest()
+    {
+        Mock<LectorFichero> mockLectorFichero = new Mock<LectorFichero>();
+        mockLectorFichero.Setup(l => l.leerLineas()).Returns(ObtenerLineasAlumnosClase());
+        transformadorClase = new TransformadorClase(mockLectorFichero.Object);
+    }
+    
+
     [Fact]
     public void Validar_Dependencia_Transformador_Lector_Test()
     {
@@ -23,19 +33,49 @@ public class TransformadorTest
     public void Obtener_Clase_Con_Alumnos_Test()
     {
 
+        Clase clase = transformadorClase.ObtenerClaseConAlumnos();
+        List<Alumno> alumnos = clase.Alumnos;
 
-        Mock<LectorFichero> mockLectorFichero = new Mock<LectorFichero>();
-        mockLectorFichero.Setup(l => l.leerLineas()).Returns(ObtenerLineasAlumnosClase());
-        TransformadorClase transformadorClase = new TransformadorClase(mockLectorFichero.Object);
+        Assert.Equal(2, alumnos.Count);
+
+        // los alumnos correctos están en la lista
+        Assert.Contains(new Alumno("antonio"), alumnos);
+        Assert.Contains(new Alumno("gema"), alumnos);
+
+    }
+
+
+     [Fact]
+    public void Obtener_Clase_Con_Alumnos_Numero_Notas_2_Test()
+    {
 
         Clase clase = transformadorClase.ObtenerClaseConAlumnos();
         List<Alumno> alumnos = clase.Alumnos;
 
-        Assert.Equal(4, alumnos.Count);
+       
+
+
+        // cada alumno tiene 2 notas
+        Assert.Equal(2, alumnos[0].Notas.Count);
+        Assert.Equal(2, alumnos[1].Notas.Count);
 
 
     }
 
+     [Fact]
+    public void Obtener_Clase_Con_Alumnos_Notas_Valor_Correcto_Test()
+    {
+        Clase clase = transformadorClase.ObtenerClaseConAlumnos();
+        List<Alumno> alumnos = clase.Alumnos;
+
+
+        // las notas son las correctas
+        Assert.Contains(new Nota(7.5), alumnos[0].Notas);
+        Assert.Contains(new Nota(8), alumnos[0].Notas);
+        Assert.Contains(new Nota(5), alumnos[1].Notas);
+        Assert.Contains(new Nota(9), alumnos[1].Notas);
+
+    }
     private List<string> ObtenerLineasAlumnosClase()
     {
         return new List<string>
