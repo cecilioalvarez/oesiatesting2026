@@ -1,6 +1,4 @@
-﻿string[] lineas = File.ReadAllLines("datosalumnos.txt");
+﻿using System.Runtime.CompilerServices;
 
-foreach (string linea in lineas)
-{
-    Console.WriteLine(linea);
-}
+[assembly: InternalsVisibleTo("MiApp2.Tests")]
+Console.WriteLine("Hello");
