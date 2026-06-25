@@ -5,13 +5,14 @@ using Moq;
 
 public class TransformadorTest
 {
-    [Fact (Skip ="Deshabilitado")]
+    [Fact]
     public void Validar_Dependencia_Transformador_Lector_Test()
     {
 
 
         Mock<LectorFichero> mockLectorFichero = new Mock<LectorFichero>();
         TransformadorClase transformadorClase = new TransformadorClase(mockLectorFichero.Object);
+        mockLectorFichero.Setup(l => l.leerLineas()).Returns(new List<string>());
         Clase clase = transformadorClase.ObtenerClaseConAlumnos();
         mockLectorFichero.Verify(l => l.leerLineas(), Times.Once);
 
