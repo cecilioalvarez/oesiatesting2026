@@ -8,7 +8,7 @@ public class LectorFicheroTest
     public void leerLineasTest()
     {
 
-        LectorFichero lectorFichero= new LectorFichero ("datosAlumno.txt");
+        LectorFichero lectorFichero= new LectorFichero ("../../../datosalumnos.txt");
         List<String> lineas=lectorFichero.leerLineas();
         Assert.Equal(7,lineas.Count);
         
