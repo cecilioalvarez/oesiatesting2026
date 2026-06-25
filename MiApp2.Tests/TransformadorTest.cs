@@ -27,18 +27,12 @@ public class TransformadorTest{
         Assert.Contains(new Alumno("gema"), alumnos);
 
     }
-
-
      [Fact]
     public void Obtener_Clase_Con_Alumnos_Numero_Notas_2_Test()
     {
 
         Clase clase = transformadorClase.ObtenerClaseConAlumnos();
         List<Alumno> alumnos = clase.Alumnos;
-
-       
-
-
         // cada alumno tiene 2 notas
         Assert.Equal(2, alumnos[0].Notas.Count);
         Assert.Equal(2, alumnos[1].Notas.Count);
@@ -51,8 +45,6 @@ public class TransformadorTest{
     {
         Clase clase = transformadorClase.ObtenerClaseConAlumnos();
         List<Alumno> alumnos = clase.Alumnos;
-
-
         // las notas son las correctas
         Assert.Contains(new Nota(7.5), alumnos[0].Notas);
         Assert.Contains(new Nota(8), alumnos[0].Notas);
