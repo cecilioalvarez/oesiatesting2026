@@ -9,7 +9,7 @@ public class ParseadorTestC{
 
       public ParseadorTestC()
     {
-         parseador = new ParseadorDocumentoA(new Documento(ObtenerLineasAlumnosClase()));
+         parseador = new ParseadorDocumentoC(new Documento(ObtenerLineasAlumnosClase()));
  
     }
     [Fact]

@@ -11,7 +11,7 @@ namespace MiApp2
 
         }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             if (obj is Alumno otro)
                 return Nombre == otro.Nombre;

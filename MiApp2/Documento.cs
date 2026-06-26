@@ -10,4 +10,10 @@ public class Documento {
 
     }
 
+    public string Cabecera()
+    {
+        
+        return lineas[0];
+    }
+
 }

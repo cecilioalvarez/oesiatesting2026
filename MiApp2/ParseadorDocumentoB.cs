@@ -1,6 +1,6 @@
 namespace MiApp2;
 
-public class ParseadorDocumentoB : ParseadorDocumento
+internal class ParseadorDocumentoB : ParseadorDocumento
 {
 
    public ParseadorDocumentoB(Documento documento): base(documento)

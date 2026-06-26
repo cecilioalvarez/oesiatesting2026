@@ -3,7 +3,7 @@ namespace MiApp2;
 public class LectorFichero
 {
 
-    private string ruta;
+    private string ruta=string.Empty;
 
     public LectorFichero(string _ruta)
     {
