@@ -3,21 +3,21 @@ namespace MiApp2.Tests;
 using MiApp2;
 using Moq;
 
-public class TransformadorTest{
+public class ParseadorTestA{
 
-    private readonly TransformadorClase transformadorClase;
+    private readonly ParseadorDocumento parseador;
 
-      public TransformadorTest()
+      public ParseadorTestA()
     {
         Mock<LectorFichero> mockLectorFichero = new Mock<LectorFichero>();
         mockLectorFichero.Setup(l => l.leerLineas()).Returns(ObtenerLineasAlumnosClase());
-        transformadorClase = new TransformadorClase(mockLectorFichero.Object);
+        parseador = new ParseadorDocumentoA(mockLectorFichero.Object);
     }
     [Fact]
     public void Obtener_Clase_Con_Alumnos_Test()
     {
 
-        Clase clase = transformadorClase.ObtenerClaseConAlumnos();
+        Clase clase = parseador.ObtenerClaseConAlumnos();
         List<Alumno> alumnos = clase.Alumnos;
 
         Assert.Equal(2, alumnos.Count);
@@ -31,7 +31,7 @@ public class TransformadorTest{
     public void Obtener_Clase_Con_Alumnos_Numero_Notas_2_Test()
     {
 
-        Clase clase = transformadorClase.ObtenerClaseConAlumnos();
+        Clase clase = parseador.ObtenerClaseConAlumnos();
         List<Alumno> alumnos = clase.Alumnos;
         // cada alumno tiene 2 notas
         Assert.Equal(2, alumnos[0].Notas.Count);
@@ -43,7 +43,7 @@ public class TransformadorTest{
      [Fact]
     public void Obtener_Clase_Con_Alumnos_Notas_Valor_Correcto_Test()
     {
-        Clase clase = transformadorClase.ObtenerClaseConAlumnos();
+        Clase clase = parseador.ObtenerClaseConAlumnos();
         List<Alumno> alumnos = clase.Alumnos;
         // las notas son las correctas
         Assert.Contains(new Nota(7.5), alumnos[0].Notas);

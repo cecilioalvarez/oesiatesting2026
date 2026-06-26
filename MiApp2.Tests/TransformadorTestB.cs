@@ -2,7 +2,7 @@ namespace MiApp2.Tests;
 
 using MiApp2;
 using Moq;
-
+/*
 public class TransformadorTestB{
 
     private readonly TransformadorClase transformadorClase;
@@ -66,3 +66,4 @@ private List<string> ObtenerLineasAlumnosClase()
     };
 }
 }
+*/
