@@ -22,11 +22,15 @@ public abstract class ParseadorDocumento
 
      protected Alumno ObtenerOCrearAlumno(Clase miClase, string nombre)
     {
+
         var alumno = miClase.Alumnos.FirstOrDefault(a => a.Nombre == nombre);
         if (alumno == null)
         {
             alumno = new Alumno { Nombre = nombre };
             miClase.AgregarAlumno(alumno);
+            Console.WriteLine("los alumnos son"+ miClase.Alumnos.Count);
+            Console.WriteLine("alumno nombre"+ alumno.Nombre);
+            
         }
         return alumno;
     }

@@ -27,7 +27,7 @@ public class ParseadorTestB{
         Assert.Contains(new Alumno("gema"), alumnos);
 
     }
-     [Fact(Skip ="no va")]
+     [Fact]
     public void Obtener_Clase_Con_Alumnos_Numero_Notas_2_Test()
     {
 
@@ -40,7 +40,7 @@ public class ParseadorTestB{
 
     }
 
-     [Fact (Skip ="no va")]
+     [Fact]
     public void Obtener_Clase_Con_Alumnos_Notas_Valor_Correcto_Test()
     {
         Clase clase = parseador.ObtenerClaseConAlumnos();

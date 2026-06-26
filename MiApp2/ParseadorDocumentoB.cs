@@ -25,7 +25,7 @@ public class ParseadorDocumentoB : ParseadorDocumento
     {
         string[] datosLinea = linea.Split(",");
 
-        Alumno alumno = ObtenerOCrearAlumno(miClase, datosLinea[1]);
+        Alumno alumno = ObtenerOCrearAlumno(miClase, datosLinea[0]);
 
         Nota nota = new Nota(double.Parse(datosLinea[1]));
         alumno.AgregarNota(nota);
