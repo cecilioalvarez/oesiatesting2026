@@ -3,22 +3,20 @@ namespace MiApp2;
 public class ParseadorDocumentoB : ParseadorDocumento
 {
 
-    private LectorFichero lectorFichero;
-
-    public ParseadorDocumentoB(LectorFichero _lectorFichero)
+   public ParseadorDocumentoB(Documento documento): base(documento)
     {
-        lectorFichero = _lectorFichero;
-
+        
     }
+
 
 
     protected override List<string> ObtenerLineasFiltradas()
     {
 
-        List<string> lineas = lectorFichero.leerLineas();
-        lineas.RemoveAll(linea => linea.Contains("/"));
-        lineas.RemoveAll(linea => linea.Contains("*"));
-        return lineas;
+       
+        documento.lineas.RemoveAll(linea => linea.Contains("/"));
+        documento.lineas.RemoveAll(linea => linea.Contains("*"));
+        return documento.lineas;
     }
 
     protected override void ProcesarLinea(Clase miClase, string linea)
